@@ -1,6 +1,7 @@
-import java.util.*;
 import java.io.*;
-public class tram {
+import java.util.*;
+
+public class beautifulMath {
 	public static PrintWriter out;
 	static class FastReader{
 		BufferedReader br;
@@ -20,25 +21,22 @@ public class tram {
 			return str;
 		}
 	}
-	
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		out = new PrintWriter(new BufferedOutputStream(System.out),true);
 		FastReader in = new FastReader();
-		int stops = Integer.parseInt(in.nextLine());
-		int i = 0;
-		int capacity=0;
-		int sum = 0;
-		
-		while(i<stops) {
-			int[] people = Arrays.stream(in.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-			sum += people[1]-people[0];
-			if(sum>capacity) {
-				capacity=sum;
+		int[] inputs = Arrays.stream(in.nextLine().split("[+]")).mapToInt(Integer::parseInt).toArray();
+		Arrays.sort(inputs);
+		String result="";
+		for(int i=0;i<inputs.length;i++) {
+			if(i==0) {
+				result+=Integer.toString(inputs[i]);
 			}
-			
-			
-			i++;
+			else {
+				result+="+"+Integer.toString(inputs[i]);
+			}
+
 		}
-		out.println(capacity);
+		out.println(result);
 	}
+	
 }

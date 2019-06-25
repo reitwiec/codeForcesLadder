@@ -1,6 +1,8 @@
-import java.util.*;
+
 import java.io.*;
-public class tram {
+import java.util.*;
+
+public class boyOrGirl {
 	public static PrintWriter out;
 	static class FastReader{
 		BufferedReader br;
@@ -24,21 +26,10 @@ public class tram {
 	public static void main(String[] args) {
 		out = new PrintWriter(new BufferedOutputStream(System.out),true);
 		FastReader in = new FastReader();
-		int stops = Integer.parseInt(in.nextLine());
-		int i = 0;
-		int capacity=0;
-		int sum = 0;
-		
-		while(i<stops) {
-			int[] people = Arrays.stream(in.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-			sum += people[1]-people[0];
-			if(sum>capacity) {
-				capacity=sum;
-			}
-			
-			
-			i++;
-		}
-		out.println(capacity);
+		String name = in.nextLine();
+		String[] temp= name.split("(?!^)");
+		List<String> checkName  = Arrays.asList(temp);
+		Set<String> s = new HashSet<String>(checkName);
+		out.println((s.size()%2==0)?("CHAT WITH HER!"):("IGNORE HIM!"));
 	}
 }

@@ -1,6 +1,6 @@
-import java.util.*;
 import java.io.*;
-public class tram {
+
+public class wayTooLongWords {
 	public static PrintWriter out;
 	static class FastReader{
 		BufferedReader br;
@@ -24,21 +24,12 @@ public class tram {
 	public static void main(String[] args) {
 		out = new PrintWriter(new BufferedOutputStream(System.out),true);
 		FastReader in = new FastReader();
-		int stops = Integer.parseInt(in.nextLine());
-		int i = 0;
-		int capacity=0;
-		int sum = 0;
-		
-		while(i<stops) {
-			int[] people = Arrays.stream(in.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-			sum += people[1]-people[0];
-			if(sum>capacity) {
-				capacity=sum;
-			}
-			
-			
-			i++;
+		int words = Integer.parseInt(in.nextLine());
+		while(words>0) {
+			String word = in.nextLine();
+			out.println((word.length()>10)?(word.charAt(0)+Integer.toString(word.length()-2)+word.charAt(word.length()-1)):(word));
+			words--;
 		}
-		out.println(capacity);
+		
 	}
 }

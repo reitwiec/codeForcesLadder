@@ -1,6 +1,8 @@
-import java.util.*;
 import java.io.*;
-public class tram {
+import java.util.*;
+import java.util.stream.*;
+
+public class horseShoe {
 	public static PrintWriter out;
 	static class FastReader{
 		BufferedReader br;
@@ -24,21 +26,10 @@ public class tram {
 	public static void main(String[] args) {
 		out = new PrintWriter(new BufferedOutputStream(System.out),true);
 		FastReader in = new FastReader();
-		int stops = Integer.parseInt(in.nextLine());
-		int i = 0;
-		int capacity=0;
-		int sum = 0;
-		
-		while(i<stops) {
-			int[] people = Arrays.stream(in.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-			sum += people[1]-people[0];
-			if(sum>capacity) {
-				capacity=sum;
-			}
-			
-			
-			i++;
-		}
-		out.println(capacity);
+		List<Integer> shoes = new ArrayList<>();
+		int[] temp = Arrays.stream(in.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+		shoes = Arrays.stream(temp).boxed().collect(Collectors.toList());
+		Set<Integer> s = new HashSet<Integer>(shoes);
+		out.println(temp.length-s.size());
 	}
 }
